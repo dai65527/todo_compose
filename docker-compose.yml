@@ -20,7 +20,7 @@ services:
         depends_on:
             - tododb
     todoclient:
-        build: ./todoclient
+        build: ./tstodo-client
         image: todoclient-image
         container_name: todoclient
         ports:
