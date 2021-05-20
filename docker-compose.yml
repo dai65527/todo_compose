@@ -1,0 +1,29 @@
+version: '3'
+services:
+    tododb:
+        image: mysql:8.0
+        container_name: tododb
+        env_file: ./database/.env
+        ports:
+            - 3306:3306
+        command: --default-authentication-plugin=mysql_native_password
+    todoapi:
+        build: ./go_simpleREST
+        image: todoapi-image
+        container_name: todoapi
+        env_file: ./database/.env
+        environment: 
+            DB_MIDDLEWARE: mysql
+            DB_HOST: tododb:3306
+        ports:
+            - 4000:4000
+        depends_on:
+            - tododb
+    todoclient:
+        build: ./todoclient
+        image: todoclient-image
+        container_name: todoclient
+        ports:
+            - 3000:3000
+        depends_on:
+            - todoapi

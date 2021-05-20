@@ -1,0 +1,6 @@
+[submodule "go_simpleREST"]
+	path = go_simpleREST
+	url = https://github.com/dai65527/go_simpleREST
+[submodule "tstodo-client"]
+	path = tstodo-client
+	url = https://github.com/dai65527/tstodo-client.git
